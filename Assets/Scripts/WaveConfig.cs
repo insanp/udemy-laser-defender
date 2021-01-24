@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveConfig : MonoBehaviour
+[CreateAssetMenu(menuName = "Enemy Wave Config")]
+public class WaveConfig : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject pathPrefab;
+    [SerializeField] float timeBetweenSpawns = 0.5f;
+    [SerializeField] float spawnRandomFactor = 0.3f;
+    [SerializeField] int numberOfEnemies = 10;
+    [SerializeField] float moveSpeed = 2f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject GetEnemyPrefab() { return enemyPrefab; }
+    public GameObject GetPathPrefab() { return pathPrefab; }
+    public float GetTimeBetweenSpawns() { return timeBetweenSpawns; }
+    public float GetSpawnRandomFactor() { return spawnRandomFactor; }
+    public int GetNumberOfEnemies() { return numberOfEnemies; }
+    public float GetMoveSpeed() { return moveSpeed; }
+
 }
