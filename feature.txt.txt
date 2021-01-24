@@ -1,0 +1,19 @@
+Feature Areas
+
+Core :
+- Player Movement
+- Player Shooting
+- Player Health
+- Enemy Movement
+- Spawn Enemy Waves
+- Enemy Health
+
+Secondary :
+- Score
+- Enemy Shooting
+
+Polish :
+- VFX
+- Sound Effects
+- Menus / Screens
+- Content / Tuning
