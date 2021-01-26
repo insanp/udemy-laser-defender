@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7612295126434452295}
   - component: {fileID: 7612295126434452294}
   - component: {fileID: 7612295126434452292}
-  m_Layer: 0
+  - component: {fileID: 4348623505098078135}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -94,9 +95,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6798220c68fb941be02bc788f49913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 300
   moveSpeed: 10
   padding: 0.2
   laserPrefab: {fileID: 4682717266636089257, guid: ba14f2d89d19b0043bbbf972b3ffced5,
     type: 3}
   laserSpeed: 25
   laserFiringPeriod: 0.1
+--- !u!61 &4348623505098078135
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7612295126434452289}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0062292814, y: -0.06852198}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.28609204, y: 0.43853664}
+  m_EdgeRadius: 0
