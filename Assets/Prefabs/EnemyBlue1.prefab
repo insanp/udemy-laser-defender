@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2318239421292278662}
   m_Layer: 0
   m_Name: EnemyBlue1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
+  shotCounter: 0
+  minTimeBetweenShots: 0.2
+  maxTimeBetweenShots: 3
+  laserPrefab: {fileID: 8891235456928329612, guid: 8a3df742de041b14a852d133a3f2f5ef,
+    type: 3}
+  laserSpeed: 10
 --- !u!60 &-2318239421292278662
 PolygonCollider2D:
   m_ObjectHideFlags: 0

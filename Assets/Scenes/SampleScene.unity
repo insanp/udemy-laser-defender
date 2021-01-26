@@ -153,6 +153,9 @@ MonoBehaviour:
   waveConfigs:
   - {fileID: 11400000, guid: b757a9143434cd84aa262406a2d610ab, type: 2}
   - {fileID: 11400000, guid: c18c957f17ff0a04593083080f597d54, type: 2}
+  - {fileID: 11400000, guid: 6579aa1f0c04dd74689340e980dae157, type: 2}
+  - {fileID: 11400000, guid: efc140f270df9c64b89f2a5c64b94470, type: 2}
+  looping: 1
 --- !u!4 &104609881
 Transform:
   m_ObjectHideFlags: 0
@@ -503,17 +506,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7612295126434452292, guid: 0c978115062504e4d82085fef0540787,
-        type: 3}
-      propertyPath: laserSpeed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612295126434452292, guid: 0c978115062504e4d82085fef0540787,
-        type: 3}
-      propertyPath: laserPrefab
-      value: 
-      objectReference: {fileID: 4682717266636089257, guid: ba14f2d89d19b0043bbbf972b3ffced5,
-        type: 3}
     - target: {fileID: 7612295126434452295, guid: 0c978115062504e4d82085fef0540787,
         type: 3}
       propertyPath: m_RootOrder
