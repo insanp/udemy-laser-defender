@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float laserSpeed = 15f;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -53,9 +55,15 @@ public class Enemy : MonoBehaviour
         health -= damage.GetDamage();
         if (health <= 0)
         {
-            GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity) as GameObject;
-            Destroy(gameObject);
-            Destroy(explosion, durationOfExplosion);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity) as GameObject;
+        Destroy(explosion, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
+        Destroy(gameObject);
     }
 }

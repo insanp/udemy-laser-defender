@@ -98,10 +98,14 @@ MonoBehaviour:
   health: 300
   moveSpeed: 10
   padding: 0.2
+  deathVFX: {fileID: 0}
+  durationOfExplosion: 1
   laserPrefab: {fileID: 4682717266636089257, guid: ba14f2d89d19b0043bbbf972b3ffced5,
     type: 3}
   laserSpeed: 25
   laserFiringPeriod: 0.1
+  deathSFX: {fileID: 8300000, guid: 51f25381d567b9f40843fde91374574f, type: 3}
+  deathSFXVolume: 0.5
 --- !u!61 &4348623505098078135
 BoxCollider2D:
   m_ObjectHideFlags: 0

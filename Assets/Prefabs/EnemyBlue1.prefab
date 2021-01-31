@@ -118,6 +118,9 @@ MonoBehaviour:
   laserSpeed: 10
   deathVFX: {fileID: 6283895500786175720, guid: 6eff8a4d5baf0154aa643db0cea6dc2e,
     type: 3}
+  durationOfExplosion: 1
+  deathSFX: {fileID: 8300000, guid: 51f25381d567b9f40843fde91374574f, type: 3}
+  deathSFXVolume: 0.5
 --- !u!60 &-2318239421292278662
 PolygonCollider2D:
   m_ObjectHideFlags: 0

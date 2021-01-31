@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a36156c2220554eab027f089cadce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSFX: {fileID: 8300000, guid: e579319079a1cc844b495d1294eea93f, type: 3}
+  soundSFXVolume: 0.5
