@@ -46,9 +46,9 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collide");
-        var damage = collision.gameObject.GetComponent<DamageDealer>();
-        ProcessHit(damage);
+        var damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) return;
+        ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damage)

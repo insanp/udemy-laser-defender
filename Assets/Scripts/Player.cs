@@ -104,5 +104,6 @@ public class Player : MonoBehaviour
         Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
         Destroy(gameObject);
+        FindObjectOfType<Level>().LoadGameOver();
     }
 }
