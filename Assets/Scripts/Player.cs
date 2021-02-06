@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserSpeed = 25f;
+
     [SerializeField] float laserFiringPeriod = 0.1f;
     [SerializeField] Coroutine firingCo;
 
@@ -25,6 +26,11 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.5f;
 
     float xMin, xMax, yMin, yMax;
+
+    internal object GetHealth()
+    {
+        return health;
+    }
 
     // Start is called before the first frame update
     void Start()
