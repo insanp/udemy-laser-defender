@@ -98,7 +98,8 @@ MonoBehaviour:
   health: 300
   moveSpeed: 10
   padding: 0.2
-  deathVFX: {fileID: 0}
+  deathVFX: {fileID: 6283895500786175720, guid: 6eff8a4d5baf0154aa643db0cea6dc2e,
+    type: 3}
   durationOfExplosion: 1
   laserPrefab: {fileID: 4682717266636089257, guid: ba14f2d89d19b0043bbbf972b3ffced5,
     type: 3}
