@@ -536,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 2507660811543532944, guid: 4a4456f94fbf1d547b9f441f9d837e1d,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: Game Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 2507660811543532956, guid: 4a4456f94fbf1d547b9f441f9d837e1d,
         type: 3}
@@ -819,6 +819,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5092621815417868054, guid: eb648d2bb0873e14c9640318974ce771,
+        type: 3}
+      propertyPath: delayInSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7237927129093524809, guid: eb648d2bb0873e14c9640318974ce771,
         type: 3}
       propertyPath: m_Name

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] float delayInSeconds = 3f;
+    [SerializeField] float delayInSeconds = 2f;
 
     public void LoadStartMenu()
     {
@@ -16,6 +16,7 @@ public class Level : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene("Game");
+        FindObjectOfType<GameSession>().ResetGame();
     }
 
     public void LoadGameOver()
