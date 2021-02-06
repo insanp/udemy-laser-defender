@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Stats")]
     [SerializeField] int health = 100;
+    [SerializeField] int scoreValue = 50;
+
+    [Header("Shooting")]
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserSpeed = 15f;
+
+    [Header("FX")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] AudioClip deathSFX;
@@ -62,6 +68,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<GameSession>().AddScore(scoreValue);
         GameObject explosion = Instantiate(deathVFX, transform.position, Quaternion.identity) as GameObject;
         Destroy(explosion, durationOfExplosion);
         AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
