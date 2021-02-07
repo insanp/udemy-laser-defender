@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     // configurations params
     [Header("Player")]
     [SerializeField] int health = 300;
-    [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float maxMoveSpeed = 0.5f;
     [SerializeField] float padding = 0.2f;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
@@ -25,8 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.5f;
 
-    Vector2 touchStartPos;
-    Vector2 touchDeltaPos;
+    Vector3 touchStartPosFinger;
+    Vector3 touchStartPosPlayer;
 
     float xMin, xMax, yMin, yMax;
 
@@ -73,42 +73,45 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount == 1)
         {
-            // first touch
+            // latest touch
             Touch touch = Input.GetTouch(0);
-
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            //Debug.Log("Player : " + transform.position + " Touch : " + touchStartPosPlayer);
+    
             switch (touch.phase)
             {
                 case TouchPhase.Began:
                     // Record initial touch position
-                    touchStartPos = touch.position;
+                    touchStartPosFinger = touchPosition;
+                    touchStartPosPlayer = transform.position;
                     break;
 
                 case TouchPhase.Moved:
-                    touchDeltaPos = touch.position - touchStartPos;
-                    touchStartPos = Vector2.MoveTowards(touchStartPos, touch.position, 1.5f);
-                    break;
-
                 case TouchPhase.Stationary:
-                    touchStartPos = touch.position;
-                    touchDeltaPos = new Vector2(0, 0);
+                    var newXPos = Mathf.Clamp(touchStartPosPlayer.x + touchPosition.x - touchStartPosFinger.x, xMin, xMax);
+                    var newYPos = Mathf.Clamp(touchStartPosPlayer.y + touchPosition.y - touchStartPosFinger.y, yMin, yMax);
+
+                    // if clamped at edge, update player new position so it won't stuck
+                    if (newXPos == xMin || newXPos == xMax)
+                    {
+                        touchStartPosPlayer.x = transform.position.x;
+                    }
+                    if (newYPos == yMin || newYPos == yMax)
+                    {
+                        touchStartPosPlayer.y = transform.position.y;
+                    }
+
+                    var newPos = new Vector2(newXPos, newYPos);
+                    transform.position = Vector2.MoveTowards(transform.position, newPos, maxMoveSpeed);
                     break;
 
                 case TouchPhase.Ended:
-                    touchStartPos = touch.position;
-                    touchDeltaPos = new Vector2(0, 0);
                     break;
             }
             
         }
-        var deltaX = Mathf.Clamp(touchDeltaPos.x * Time.deltaTime * moveSpeed, -0.1f, 0.1f);
-        var deltaY = Mathf.Clamp(touchDeltaPos.y * Time.deltaTime * moveSpeed, -0.1f, 0.1f);
-
-        var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
-        var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
-
-        transform.position = new Vector2(newXPos, newYPos);
     }
 
     private void SetUpMoveBoundaries()
