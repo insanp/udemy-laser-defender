@@ -100,7 +100,6 @@ public class Player : MonoBehaviour
                     touchDeltaPos = new Vector2(0, 0);
                     break;
             }
-
             
         }
         var deltaX = Mathf.Clamp(touchDeltaPos.x * Time.deltaTime * moveSpeed, -0.1f, 0.1f);
