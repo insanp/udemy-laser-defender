@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     // configurations params
     [Header("Player")]
     [SerializeField] int health = 300;
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 1f;
     [SerializeField] float padding = 0.2f;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] AudioClip deathSFX;
     [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.5f;
+
+    Vector2 touchStartPos;
+    Vector2 touchDeltaPos;
 
     float xMin, xMax, yMin, yMax;
 
@@ -70,8 +73,38 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        var deltaX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        var deltaY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
+        if (Input.touchCount > 0)
+        {
+            // first touch
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    // Record initial touch position
+                    touchStartPos = touch.position;
+                    break;
+
+                case TouchPhase.Moved:
+                    touchDeltaPos = touch.position - touchStartPos;
+                    touchStartPos = Vector2.MoveTowards(touchStartPos, touch.position, 1.5f);
+                    break;
+
+                case TouchPhase.Stationary:
+                    touchStartPos = touch.position;
+                    touchDeltaPos = new Vector2(0, 0);
+                    break;
+
+                case TouchPhase.Ended:
+                    touchStartPos = touch.position;
+                    touchDeltaPos = new Vector2(0, 0);
+                    break;
+            }
+
+            
+        }
+        var deltaX = Mathf.Clamp(touchDeltaPos.x * Time.deltaTime * moveSpeed, -0.1f, 0.1f);
+        var deltaY = Mathf.Clamp(touchDeltaPos.y * Time.deltaTime * moveSpeed, -0.1f, 0.1f);
 
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
